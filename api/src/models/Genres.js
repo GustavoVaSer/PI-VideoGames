@@ -12,4 +12,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   });
+
+  const Genre = sequelize.define("genre", {
+    // propiedades del modelo
+  });
+
+  Genre.associate = (models) => {
+    Genre.belongsToMany(models.Videogame, { through: "VideogameGenre" });
+  };
+
+  return Genre;
 };

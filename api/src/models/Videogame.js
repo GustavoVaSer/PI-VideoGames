@@ -34,4 +34,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   });
+
+  const Videogame = sequelize.define("videogame", {
+    // propiedades del modelo
+  });
+
+  Videogame.associate = (models) => {
+    Videogame.belongsToMany(models.Genre, { through: "VideogameGenre" });
+  };
+
+  return Videogame;
 };
