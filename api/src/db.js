@@ -24,12 +24,13 @@ fs.readdirSync(path.join(__dirname, "models"))
     modelDefiners.push(modelDefiner);
   });
 
-// modelDefiners.forEach((modelDefiner) => modelDefiner(sequelize, DataTypes));
-
 // Asocia los modelos si es necesario
-Object.keys(sequelize.models).forEach((modelName) => {
-  if (sequelize.models[modelName].associate) {
-    sequelize.models[modelName].associate(sequelize.models);
+modelDefiners.forEach((modelDefiner) => {
+  if (modelDefiner && modelDefiner.default) {
+    const model = modelDefiner.default(sequelize, DataTypes);
+    if (model.associate) {
+      model.associate(sequelize.models);
+    }
   }
 });
 
