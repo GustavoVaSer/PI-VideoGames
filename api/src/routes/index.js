@@ -1,7 +1,12 @@
 const router = require("express").Router();
 const { Videogame, Genre } = require("../db.js");
 const axios = require("axios");
+const { Op } = require("sequelize");
+require("dotenv").config();
+
 // Importar todos los routers;
+const apiKey = process.env.API_KEY;
+
 // Ejemplo: const authRouter = require('./auth.js');
 // GET /videogames
 router.get("/videogames", async (req, res, next) => {
