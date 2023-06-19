@@ -7,6 +7,11 @@ require("dotenv").config();
 // Importar todos los routers;
 const apiKey = process.env.API_KEY;
 
+// Ruta principal
+router.get("/", (req, res) => {
+  res.send("Bienvenido a mi aplicación de videojuegos");
+});
+
 // Ejemplo: const authRouter = require('./auth.js');
 // GET /videogames
 router.get("/videogames", async (req, res, next) => {
@@ -15,7 +20,11 @@ router.get("/videogames", async (req, res, next) => {
     const videogamesDB = await Videogame.findAll();
 
     // Obtener los videojuegos de la API RAWG
-    const response = await axios.get("https://api.rawg.io/api/games");
+    const response = await axios.get("https://api.rawg.io/api/games", {
+      params: {
+        key: apiKey, // Incluir la API_KEY en los parámetros de consulta
+      },
+    });
     const videogamesAPI = response.data.results;
 
     // Combinar los videojuegos de la base de datos y la API en un solo arreglo
@@ -43,7 +52,12 @@ router.get("/videogames/:idVideogame", async (req, res, next) => {
     } else {
       // El videojuego no existe en la base de datos, buscarlo en la API RAWG
       const response = await axios.get(
-        `https://api.rawg.io/api/games/${idVideogame}`
+        `https://api.rawg.io/api/games/${idVideogame}`,
+        {
+          params: {
+            key: apiKey, // Incluir la API_KEY en los parámetros de consulta
+          },
+        }
       );
       const videogameAPI = response.data;
 
@@ -78,6 +92,7 @@ router.get("/videogames/name", async (req, res, next) => {
         params: {
           search: name,
           page_size: 15,
+          key: apiKey, // Incluir la API_KEY en los parámetros de consulta
         },
       });
       const videogamesAPI = response.data.results;
@@ -133,7 +148,11 @@ router.get("/genres", async (req, res, next) => {
       res.json(genresDB);
     } else {
       // Los géneros no están en la base de datos, obtenerlos de la API RAWG
-      const response = await axios.get("https://api.rawg.io/api/genres");
+      const response = await axios.get("https://api.rawg.io/api/genres", {
+        params: {
+          key: apiKey, // Incluir la API_KEY en los parámetros de consulta
+        },
+      });
       const genresAPI = response.data.results;
 
       // Guardar los géneros en la base de datos
