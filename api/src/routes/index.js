@@ -52,12 +52,12 @@ router.get("/videogames/:idVideogame", async (req, res, next) => {
     } else {
       // El videojuego no existe en la base de datos, buscarlo en la API RAWG
       const response = await axios.get(
-        `https://api.rawg.io/api/games/${idVideogame}`,
-        {
-          params: {
-            key: apiKey, // Incluir la API_KEY en los parámetros de consulta
-          },
-        }
+        `https://api.rawg.io/api/games/${idVideogame}?key=${apiKey}`
+        // {
+        //   // params: {
+        //   //   key: apiKey, // Incluir la API_KEY en los parámetros de consulta
+        //   // },
+        // }
       );
       const videogameAPI = response.data;
 
@@ -67,6 +67,25 @@ router.get("/videogames/:idVideogame", async (req, res, next) => {
     next(error);
   }
 });
+
+// const findGameAPI = async (idVideogame) => {
+//   try {
+//     const {data} = await axios.get(https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY})
+//     const gameObj = {
+//       id: data.id,
+//       name: data.name,
+//       description: data.description,
+//       platforms: data.platforms,
+//       image: data.background_image,
+//       released: data.released,
+//       rating: data.rating,
+//       genres: data.genres,
+//     }
+//     return gameObj;
+//   } catch (error) {
+//     return null;
+//   }
+// };
 
 // GET /videogames/name?="..."
 router.get("/videogames/name", async (req, res, next) => {
