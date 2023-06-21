@@ -4,22 +4,19 @@ const { API_KEY } = process.env;
 
 const URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
-const getVideoGame = async () => {
+const getVideoGames = async () => {
   try {
-    const { data } = await axios.get(URL);
-
-    const videogames = data.results.map((game) => {
-      return {
-        id: game.id,
-        name: game.name,
-        description: game.description,
-        platforms: game.platforms,
-        image: game.background_image,
-        released: game.released,
-        rating: game.rating,
-        genres: game.genres,
-      };
-    });
+    const response = await axios.get(URL);
+    const videogames = response.data.results.map((game) => ({
+      id: game.id,
+      name: game.name,
+      description: game.description,
+      platforms: game.platforms,
+      image: game.background_image,
+      released: game.released,
+      rating: game.rating,
+      genres: game.genres,
+    }));
 
     return videogames;
   } catch (error) {
@@ -28,4 +25,4 @@ const getVideoGame = async () => {
   }
 };
 
-module.exports = getVideoGame;
+module.exports = getVideoGames;
