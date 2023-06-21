@@ -1,18 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const {
-  getVideoGames,
-  getVideoGamesName,
+const getVideoGame = require("./videoGameControllers/getVideoGame");
+const getVideoGameName = require("./videoGameControllers/getVideoGameName");
+const getVideoGameId = require("./videoGameControllers/getVideoGameId");
+const getGenre = require("./genreControllers/getGenre");
+const postVideoGame = require("./videoGameControllers/postVideoGame");
+
+module.exports = {
+  getVideoGame,
+  getVideoGameName,
   getVideoGameId,
-  getGenres,
+  getGenre,
   postVideoGame,
-} = require("./videoGameControllers");
-
-// Rutas para los endpoints
-router.get("/videogames", getVideoGames);
-router.get("/videogames/search", getVideoGamesName);
-router.get("/videogame/:id", getVideoGameId);
-router.get("/genres", getGenres);
-router.post("/videogame", postVideoGame);
-
-module.exports = router;
+};

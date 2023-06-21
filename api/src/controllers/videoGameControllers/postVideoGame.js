@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 const { Videogame, Genre } = require("../../db");
-const formatDate = require("../../helpers/formatDate");
+const formatDate = require("../../helpers/dateFormat");
 
 const postVideoGame = async (game) => {
   const { name, description, platforms, image, released, rating, genres } =

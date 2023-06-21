@@ -4,7 +4,7 @@ const { API_KEY } = process.env;
 
 const URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
-const getVideoGames = async () => {
+const getVideoGame = async () => {
   try {
     const response = await axios.get(URL);
     const videogames = response.data.results.map((game) => ({
@@ -25,4 +25,4 @@ const getVideoGames = async () => {
   }
 };
 
-module.exports = getVideoGames;
+module.exports = getVideoGame;

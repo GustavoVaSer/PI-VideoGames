@@ -6,7 +6,7 @@ const { Op } = require("sequelize");
 
 const URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
-const getVideoGamesByName = async (name) => {
+const getVideoGameName = async (name) => {
   if (!name) {
     const error = new Error(
       "Debe ingresar un nombre para buscar el videojuego"
@@ -69,4 +69,4 @@ const getVideoGamesByName = async (name) => {
   }
 };
 
-module.exports = getVideoGamesByName;
+module.exports = getVideoGameName;

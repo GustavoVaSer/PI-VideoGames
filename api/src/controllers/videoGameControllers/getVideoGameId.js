@@ -2,7 +2,7 @@ require("dotenv").config();
 const axios = require("axios");
 const { API_KEY } = process.env;
 
-const getVideoGameById = async (idVideogame) => {
+const getVideoGameId = async (idVideogame) => {
   const getGameFromAPI = async (idVideogame) => {
     try {
       const response = await axios.get(
@@ -54,4 +54,4 @@ const getVideoGameById = async (idVideogame) => {
   }
 };
 
-module.exports = getVideoGameById;
+module.exports = getVideoGameId;
