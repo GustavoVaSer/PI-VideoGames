@@ -1,21 +1,17 @@
-const { DataTypes, Sequelize } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define(
-    "genre",
-    {
-      id: {
-        type: DataTypes.STRING,
-        primaryKey: true,
-      },
-      idGenreRawg: {
-        type: DataTypes.INTEGER,
-        unique: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-      },
+  const Genre = sequelize.define("Genre", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
-    { timestamps: false }
-  );
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
+
+  return Genre;
 };
