@@ -68,25 +68,6 @@ router.get("/videogames/:idVideogame", async (req, res, next) => {
   }
 });
 
-// const findGameAPI = async (idVideogame) => {
-//   try {
-//     const {data} = await axios.get(https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY})
-//     const gameObj = {
-//       id: data.id,
-//       name: data.name,
-//       description: data.description,
-//       platforms: data.platforms,
-//       image: data.background_image,
-//       released: data.released,
-//       rating: data.rating,
-//       genres: data.genres,
-//     }
-//     return gameObj;
-//   } catch (error) {
-//     return null;
-//   }
-// };
-
 // GET /videogames/name?="..."
 router.get("/videogames/name", async (req, res, next) => {
   const { name } = req.query;
