@@ -1,13 +1,13 @@
-import { GET_USERS } from "./action";
+import { FETCH_VIDEOGAMES_SUCCESS } from "./action";
 
-const initialState = { allUsers: [], post: [] };
+const initialState = { videoGames: [], post: [] };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_USERS:
       return {
         ...state,
-        allUsers: action.payload,
+        videoGames: action.payload,
       };
     default:
       return state;
