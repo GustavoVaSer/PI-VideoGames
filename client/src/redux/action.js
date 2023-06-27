@@ -1,4 +1,5 @@
 import axios from "axios";
+require("dotenv").config();
 
 export const GET_USERS = "GET_USERS";
 const API_KEY = process.env.API_KEY;
