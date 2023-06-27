@@ -20,8 +20,7 @@ function Home() {
 
   return (
     <div className={styles.home}>
-      <h1 className={styles.homeTitle}> PI Videogames</h1>
-      <p>Esta es la home page</p>
+      <p className={styles.homeDescription}>This is your home page where you can search all your favorites videogames info!</p>
       <NavBar />
       <Cards allUsers = {allUsers} />
     </div>
