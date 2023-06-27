@@ -6,7 +6,7 @@ import styles from './home.module.css'
 function Home() {
   return (
     <div className={styles.home}>
-      <h1>PI Videogames</h1>
+      <h1 className={styles.homeTitle}> PI Videogames</h1>
       <p>Esta es la home page</p>
       <NavBar />
       <Cards />

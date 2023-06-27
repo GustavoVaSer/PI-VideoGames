@@ -5,6 +5,9 @@ function Cards() {
   return (
     <div className={styles.cards}>
         <Card />
+        <Card />
+        <Card />
+        <Card />
     </div>
   );
 }

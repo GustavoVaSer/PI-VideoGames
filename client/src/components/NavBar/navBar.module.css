@@ -1,0 +1,23 @@
+.searchBox {
+    padding-top: 15px;
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.searchBox button {
+    border-radius: 8px;
+    height: 30px;
+    background-color: #0a527c;
+    color:  white;
+    border: 0px;
+    padding: 5px;
+    margin-left: 10px;
+    flex: auto;
+    &:hover {
+        background-color: red;
+    }
+}
