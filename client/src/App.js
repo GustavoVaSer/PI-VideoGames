@@ -4,7 +4,6 @@ import Home from "./views/Home/home";
 import Detail from "./views/Detail/detail";
 import Create from "./views/Create/create";
 import "./App.css";
-//si no hace bien los cambios agrega el switch a las Routes
 
 function App() {
   return (

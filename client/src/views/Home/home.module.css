@@ -2,3 +2,9 @@
     font-family: "Bigelow Rules";
     color: greenyellow;
 }
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
