@@ -24,6 +24,15 @@ export function fetchVideoGames() {
     }
   };
 }
+export const setSearchTerm = (searchTerm) => {
+  return async function (dispatch) {
+    dispatch({
+      type: "SET_SEARCH_TERM",
+      payload: searchTerm,
+    });
+    dispatch(fetchVideoGames(searchTerm));
+  };
+};
 
 export const setGenreFilter = (genre) => {
   return {
