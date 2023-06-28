@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './card.module.css';
 
-function Card({ game }) {
-  const { id, name, image, genres } = game;
-
+function Card({ name, image, genres, id }) {
   return (
     <Link to={`/home/${id}`} className={styles.cardLink}>
       <div className={styles.card}>

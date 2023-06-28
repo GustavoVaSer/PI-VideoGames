@@ -32,6 +32,7 @@ function Home() {
           name={game.name}
           image={game.background_image}
           genres={game.genres}
+          id={game.id}
         />
         ))}
       </div>
