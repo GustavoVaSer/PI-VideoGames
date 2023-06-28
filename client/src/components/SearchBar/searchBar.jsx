@@ -7,6 +7,7 @@ function SearchBar() {
   const dispatch = useDispatch();
 
   const handleSearch = () => {
+    console.log("Botón de búsqueda clicado");
     dispatch(setSearchTerm(searchValue));
     dispatch(fetchVideoGames());
   };

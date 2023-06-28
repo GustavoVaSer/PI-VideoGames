@@ -12,6 +12,7 @@ const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 console.log(API_KEY);
 
 export function fetchVideoGames() {
+  console.log("Ejecutando fetchVideoGames");
   return async function (dispatch) {
     try {
       const response = await axios.get(
@@ -27,12 +28,10 @@ export function fetchVideoGames() {
   };
 }
 export const setSearchTerm = (searchTerm) => {
-  return async function (dispatch) {
-    dispatch({
-      type: SET_SEARCH_TERM,
-      payload: searchTerm,
-    });
-    dispatch(fetchVideoGames(searchTerm));
+  console.log("Ejecutando setSearchTerm con término de búsqueda:", searchTerm);
+  return {
+    type: SET_SEARCH_TERM,
+    payload: searchTerm,
   };
 };
 

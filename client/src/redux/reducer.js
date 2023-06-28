@@ -5,9 +5,17 @@ import {
   SET_ORIGIN_FILTER,
   SET_CURRENT_PAGE,
   SORT_VIDEO_GAMES,
+  SET_SEARCH_TERM, // Agregar esta importación
 } from "./action";
 
-const initialState = { videoGames: [], post: [] };
+const initialState = {
+  videoGames: [],
+  post: [],
+  genreFilter: "",
+  originFilter: "",
+  currentPage: 1,
+  searchTerm: "", // Nuevo estado para el término de búsqueda
+};
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -17,20 +25,29 @@ function rootReducer(state = initialState, action) {
         videoGames: action.payload,
       };
     case FETCH_VIDEOGAMES_FAILURE:
-      // Handle the failure case if needed
       return state;
     case SET_GENRE_FILTER:
-      // Handle setting the genre filter
-      return state;
+      return {
+        ...state,
+        genreFilter: action.payload,
+      };
     case SET_ORIGIN_FILTER:
-      // Handle setting the origin filter
-      return state;
+      return {
+        ...state,
+        originFilter: action.payload,
+      };
     case SET_CURRENT_PAGE:
-      // Handle setting the current page
-      return state;
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
     case SORT_VIDEO_GAMES:
-      // Handle sorting the video games
       return state;
+    case SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
     default:
       return state;
   }

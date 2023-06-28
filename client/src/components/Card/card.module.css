@@ -16,6 +16,7 @@
     transition: transform 0.25s ease-out;
     box-shadow: 0 0 10px black;
     flex-wrap: wrap;
+    margin-top: 2rem;;
     &:hover {
         box-shadow: 0 0 50px #80001c;
     }
