@@ -1,8 +1,8 @@
 
 .card {
     display: flex;
-    flex-direction: column;
-    border : 1px solid black;
+    flex-direction: row;
+    border : 1px solid lightcyan;
     color: lightgrey;
     background-color: black ;
     border-radius: 10px;
@@ -26,7 +26,7 @@
 }
 .card img {
     width: 150px;
-    border: 1px solid black;
+    border: 1px solid #fdfcfc;
     border-radius: 5px;
     box-shadow: 0 0 5px black;
 }

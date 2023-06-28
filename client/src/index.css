@@ -6,7 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(https://getwallpapers.com/wallpaper/full/2/f/c/33699.jpg);
-  background-size: cover;
+  /* background-size: cover; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Ajusta la alineación horizontal según tu preferencia */
 }
 
 code {
