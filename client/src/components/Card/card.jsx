@@ -1,21 +1,16 @@
 import styles from "./card.module.css"
 
-function Card({user}) {
-const {id, name, slug, image, year_end, year_start} = user;
-
+function Card({ name, image, genres }) {
   return (
     <div className={styles.card}>
-        <h2>{id}:</h2>
-        <h4>{name}:</h4>
-        <h4>{slug}:</h4>
-        <h4>{image}</h4>
-        <h4>{year_end}</h4>
-        <h4>{year_start}</h4>
-        {/* <h4>{game_counts}</h4>
-        <h4>{image_background}</h4> */}
-        <div>
-            <img src="" alt="" />
-        </div>
+      <h2>{name}</h2>
+      <img src={image} alt={name} />
+      <h4>Genres:</h4>
+      <ul>
+        {genres.map((genre) => (
+          <li key={genre.id}>{genre.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }

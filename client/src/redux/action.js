@@ -5,9 +5,11 @@ export const FETCH_VIDEOGAMES_FAILURE = "FETCH_VIDEOGAMES_FAILURE";
 export const SET_GENRE_FILTER = "SET_GENRE_FILTER";
 export const SET_ORIGIN_FILTER = "SET_ORIGIN_FILTER";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
 export const SORT_VIDEO_GAMES = "SORT_VIDEO_GAMES";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
+console.log(API_KEY);
 
 export function fetchVideoGames() {
   return async function (dispatch) {
@@ -27,7 +29,7 @@ export function fetchVideoGames() {
 export const setSearchTerm = (searchTerm) => {
   return async function (dispatch) {
     dispatch({
-      type: "SET_SEARCH_TERM",
+      type: SET_SEARCH_TERM,
       payload: searchTerm,
     });
     dispatch(fetchVideoGames(searchTerm));
@@ -36,28 +38,28 @@ export const setSearchTerm = (searchTerm) => {
 
 export const setGenreFilter = (genre) => {
   return {
-    type: "SET_GENRE_FILTER",
+    type: SET_GENRE_FILTER,
     payload: genre,
   };
 };
 
 export const setOriginFilter = (origin) => {
   return {
-    type: "SET_ORIGIN_FILTER",
+    type: SET_ORIGIN_FILTER,
     payload: origin,
   };
 };
 
 export const setCurrentPage = (pageNumber) => {
   return {
-    type: "SET_CURRENT_PAGE",
+    type: SET_CURRENT_PAGE,
     payload: pageNumber,
   };
 };
 
 export const sortVideoGames = (sortType) => {
   return {
-    type: "SORT_VIDEO_GAMES",
+    type: SORT_VIDEO_GAMES,
     payload: sortType,
   };
 };

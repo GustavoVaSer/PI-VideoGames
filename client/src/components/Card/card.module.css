@@ -1,3 +1,4 @@
+
 .card {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,7 @@
     color: lightgrey;
     background-color: black ;
     border-radius: 10px;
-    /* width: 300px; */
+    width: 150px;
     padding: 25px;
     margin-left: 20px;
     cursor: pointer;
@@ -14,10 +15,12 @@
     transform: translateZ(0);
     transition: transform 0.25s ease-out;
     box-shadow: 0 0 10px black;
+    flex-wrap: wrap;
     &:hover {
         box-shadow: 0 0 50px #80001c;
     }
 }
+  
 .card:hover {
     transform: scale(1.10);
 }

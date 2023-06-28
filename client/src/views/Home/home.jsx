@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar/searchBar';
 import Filters from '../../components/Filters/filters.jsx';
 import SortingOptions from '../../components/SortingOptions/sortingOptions';
 import Pagination from '../../components/Pagination/pagination';
-import Cards from '../../components/Cards/cards';
+import Card from '../../components/Card/card.jsx'
 import styles from './home.module.css'
 
 function Home() {
@@ -27,7 +27,12 @@ function Home() {
       <SortingOptions />
       <div className={styles.cardsContainer}>
         {videoGames.map((game) => (
-          <Cards key={game.id} game={game} />
+          <Card
+          key={game.id}
+          name={game.name}
+          image={game.background_image}
+          genres={game.genres}
+        />
         ))}
       </div>
       <Pagination />
@@ -36,4 +41,3 @@ function Home() {
 }
 
 export default Home;
-
