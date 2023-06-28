@@ -1,11 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchVideoGames } from '../../redux/actions';
+import { fetchVideoGames } from '../../redux/action.js';
 import SearchBar from '../../components/SearchBar/searchBar';
-import Filters from '../../components/Filters/filters';
-import SortingOptions from '../../components/SortingOptions';
-import Pagination from '../../components/Pagination';
+import Filters from '../../components/Filters/filters.jsx';
+import SortingOptions from '../../components/SortingOptions/sortingOptions';
+import Pagination from '../../components/Pagination/pagination';
 import Cards from '../../components/Cards/cards';
 import styles from './home.module.css'
 
