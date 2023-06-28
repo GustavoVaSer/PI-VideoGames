@@ -20,7 +20,7 @@ function Filters() {
       <h2>Filters</h2>
       <div>
         <h3>Genre</h3>
-        {genres.map((genre) => (
+        {genres && genres.map((genre) => (
           <button key={genre.id} onClick={() => handleGenreFilter(genre.name)}>
             {genre.name}
           </button>
@@ -28,7 +28,7 @@ function Filters() {
       </div>
       <div>
         <h3>Origin</h3>
-        {origins.map((origin) => (
+        {origins && origins.map((origin) => (
           <button key={origin.id} onClick={() => handleOriginFilter(origin.name)}>
             {origin.name}
           </button>
@@ -36,6 +36,6 @@ function Filters() {
       </div>
     </div>
   );
-}
+};
 
 export default Filters;

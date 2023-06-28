@@ -1,7 +1,7 @@
 import styles from "./card.module.css"
 
 function Card({user}) {
-const {id, name, slug, image, year_end, year_start, games_count, image_backgound} = user;
+const {id, name, slug, image, year_end, year_start} = user;
 
   return (
     <div className={styles.card}>

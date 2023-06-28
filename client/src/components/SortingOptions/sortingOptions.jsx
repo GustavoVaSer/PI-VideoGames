@@ -5,7 +5,7 @@ import { sortVideoGames } from '../../redux/action';
 function SortingOptions() {
   const dispatch = useDispatch();
 
-  const [sortType, setSortType] = useState('');
+  const [setSortType] = useState('');
 
   const handleSort = (type) => {
     setSortType(type);

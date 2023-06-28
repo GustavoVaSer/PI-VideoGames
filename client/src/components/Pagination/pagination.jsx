@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPage } from '../../redux/action';
 
 function Pagination() {
   const dispatch = useDispatch();
