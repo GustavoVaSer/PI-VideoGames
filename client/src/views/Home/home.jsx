@@ -8,6 +8,7 @@ import SortingOptions from '../../components/SortingOptions/sortingOptions';
 import Pagination from '../../components/Pagination/pagination';
 import Card from '../../components/Card/card.jsx'
 import styles from './home.module.css'
+import { Link } from 'react-router-dom';
 
 function Home() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function Home() {
         ))}
       </div>
       <Pagination />
+      <Link to="/form" className={styles.formButton}>Go to Form</Link>
     </div>
   );
 }
