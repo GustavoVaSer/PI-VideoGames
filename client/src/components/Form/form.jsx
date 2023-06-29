@@ -58,7 +58,11 @@ function Form() {
   };
 
   const handleGenreChange = (e) => {
-    const selectedGenres = Array.from(e.target.selectedOptions, (option) => option.value);
+    const selectedGenreValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    const selectedGenres = selectedGenreValues.map((value) => ({
+      id: value,
+      name: value,
+    }));
     setGenres(selectedGenres);
   };
 
