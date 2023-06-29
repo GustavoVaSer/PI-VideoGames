@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './form.module.css'
 
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 
@@ -17,7 +18,7 @@ function Form() {
 
     // Validaciones del formulario
     if (!name || !image || !description || !platforms || !releaseDate || !rating || genres.length === 0) {
-      setError('Por favor, completa todos los campos.');
+      setError('Please complete all the fields.');
       return;
     }
     const newGame = {
@@ -68,43 +69,43 @@ function Form() {
 
   return (
     <div>
-      <h2>Crear Nuevo Videojuego</h2>
+      <h2 className={styles.formTitle}>Create your new VideoGame !</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Nombre:</label>
-          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <label className={styles.labels} htmlFor="name">Name:</label>
+          <input className={styles.inputField} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="image">Imagen:</label>
-          <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
+          <label className={styles.labels} htmlFor="image">Image:</label>
+          <input className={styles.inputField} type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="description">Descripción:</label>
-          <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <label className={styles.labels} htmlFor="description">Description:</label>
+          <textarea className={styles.textareaField} id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="platforms">Plataformas:</label>
-          <input type="text" id="platforms" value={platforms} onChange={(e) => setPlatforms(e.target.value)} />
+          <label className={styles.labels} htmlFor="platforms">Plataforms:</label>
+          <input className={styles.inputField} type="text" id="platforms" value={platforms} onChange={(e) => setPlatforms(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="releaseDate">Fecha de lanzamiento:</label>
-          <input type="text" id="releaseDate" value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+          <label className={styles.labels} htmlFor="releaseDate">Release Date:</label>
+          <input className={styles.inputField} type="text" id="releaseDate" value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="rating">Rating:</label>
-          <input type="number" id="rating" value={rating} onChange={(e) => setRating(e.target.value)} />
+          <label className={styles.labels} htmlFor="rating">Rating:</label>
+          <input className={styles.inputField} type="number" id="rating" value={rating} onChange={(e) => setRating(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="genres">Géneros:</label>
-          <select id="genres" multiple value={genres} onChange={handleGenreChange}>
-            <option value="accion">Acción</option>
-            <option value="aventura">Aventura</option>
-            <option value="estrategia">Estrategia</option>
-            <option value="rol">Rol</option>
+          <label className={styles.labels} htmlFor="genres">Genres:</label>
+          <select className={styles.selectField} id="genres" multiple value={genres} onChange={handleGenreChange}>
+            <option className={styles.option} value="accion">Action</option>
+            <option className={styles.option} value="aventura">Advenures</option>
+            <option className={styles.option} value="estrategia">Strategy</option>
+            <option className={styles.option} value="rol">Rol</option>
           </select>
         </div>
-        <button type="submit">Crear Videojuego</button>
+        <button className={styles.button} type="submit">Crear Videojuego</button>
       </form>
     </div>
   );

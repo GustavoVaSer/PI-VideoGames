@@ -1,0 +1,54 @@
+.formTitle {
+    color: yellowgreen;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+}
+
+.inputField {
+    background-color: black;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+    padding: 8px;
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+  }
+
+  .textareaField {
+    background-color: black;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+    padding: 8px;
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+  }
+
+  .selectField {
+    background-color: black;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+    padding: 8px;
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+  }
+
+  .option:hover {
+    background-color: yellowgreen;
+    color: black;
+    }
+
+
+  .button {
+    background-color: yellowgreen;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .labels {
+    color: yellowgreen;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+  }
