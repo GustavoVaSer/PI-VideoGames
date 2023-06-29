@@ -16,18 +16,31 @@ function GameDetail({ match }) {
   }, [gameId]);
 
   if (!gameDetails) {
-    return <p>Loading game details...</p>;
+    return <p>No details for this game...</p>;
   }
+
+  const {
+    id,
+    name,
+    background_image,
+    platforms,
+    description_raw,
+    released,
+    rating,
+    genres
+  } = gameDetails;
 
   return (
     <div>
       <h2>Game Detail</h2>
-      <h3>Name: {gameDetails.name}</h3>
-      <p>Game ID: {gameId}</p>
-      {/* Renderiza los demás detalles del videojuego */}
-      <img src={gameDetails.background_image} alt={gameDetails.name} />
-      <p>Description: {gameDetails.description_raw}</p>
-      {/* Agrega más elementos HTML para mostrar los demás detalles del videojuego */}
+      <h3>Name: {name}</h3>
+      <p>Game ID: {id}</p>
+      <img src={background_image} alt={name} />
+      <p>Description: {description_raw}</p>
+      <p>Platforms: {platforms.map(platform => platform.platform.name).join(', ')}</p>
+      <p>Released: {released}</p>
+      <p>Rating: {rating}</p>
+      <p>Genres: {genres.map(genre => genre.name).join(', ')}</p>
     </div>
   );
 }
