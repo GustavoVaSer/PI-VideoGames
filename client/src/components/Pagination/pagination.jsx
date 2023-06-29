@@ -1,54 +1,70 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from '../../redux/action';
+import { useSelector } from 'react-redux';
+
 
 function Pagination() {
   const dispatch = useDispatch();
-  const videoGames = useSelector((state) => state.videoGames); // Obtén la lista de videojuegos desde el estado de Redux
-  const itemsPerPage = 15; // Número de videojuegos por página
+  const itemsPerPage = 15;
+  const [currentGames, setCurrentGames] = useState([]);
+  const currentPage = useSelector((state) => state.currentPage);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(videoGames.length / itemsPerPage);
+  const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`);
+        const data = await response.json();
+        const gamesToLoad = data.results;
+        setCurrentGames(gamesToLoad);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
 
   const handleClick = (pageNumber) => {
-    dispatch(setCurrentPage(pageNumber));
-  };
+    let nextPage = currentPage;
 
-  const renderPaginationButtons = () => {
-    const buttons = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      buttons.push(
-        <button
-          key={i}
-          onClick={() => handleClick(i)}
-          className={currentPage === i ? 'active' : ''}
-        >
-          {i}
-        </button>
-      );
+    if (pageNumber === "prev") {
+      nextPage = currentPage - 1;
+    } else if (pageNumber === "next") {
+      nextPage = currentPage + 1;
+    } else {
+      nextPage = pageNumber;
     }
 
-    return buttons;
+    dispatch(setCurrentPage(nextPage));
   };
 
-  // Calcula el índice de inicio y fin de los videojuegos a mostrar en la página actual
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentVideoGames = videoGames.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(currentGames.count / itemsPerPage);
+
+  const renderPaginationButtons = () => {
+    return (
+      <div>
+        <button onClick={() => handleClick("prev")} disabled={currentPage === 1}>
+          &lt; Anterior
+        </button>
+        <button onClick={() => handleClick("next")} disabled={currentPage === totalPages}>
+          Siguiente &gt;
+        </button>
+      </div>
+    );
+  };
 
   return (
     <div>
       <h2>Pagination</h2>
       <div>
-        {currentVideoGames.map((game) => (
-          // Renderiza los videojuegos en la página actual
+        {currentGames.map((game) => (
           <div key={game.id}>{game.name}</div>
         ))}
       </div>
-      <div>
-        {/* Renderiza los botones de paginación */}
-        {renderPaginationButtons()}
-      </div>
+      <div>{renderPaginationButtons()}</div>
     </div>
   );
 }

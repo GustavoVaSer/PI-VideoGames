@@ -6,10 +6,10 @@
 
 .inputField {
     background-color: black;
-    color: yellowgreen;
+    color: #ffffff;
     border: 1px solid yellowgreen;
     padding: 8px;
-    font-family: "Press Start 2P", cursive;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     border-radius: 10px;
     width: 100px;
@@ -21,10 +21,10 @@
 
   .textareaField {
     background-color: black;
-    color: yellowgreen;
+    color: #ffffff;
     border: 1px solid yellowgreen;
     padding: 8px;
-    font-family: "Press Start 2P", cursive;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     width: 100px;
     height: 20px;
@@ -60,4 +60,8 @@
     color: yellowgreen;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30px;
+  }
+
+  .error {
+    color: red;
   }
