@@ -38,7 +38,7 @@ function Home() {
         ))}
       </div>
       <Pagination />
-      <Link to="/form" className={styles.formButton}>Go to Form</Link>
+        <Link to="/form" className={styles.formButton}>Go to Form</Link>
     </div>
   );
 }
