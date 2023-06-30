@@ -58,9 +58,9 @@ function Pagination() {
   };
 
   return (
-    <div className={styles.container}>
+    <div >
       <h2>Pagination</h2>
-      <div>
+      <div className={styles.container}>
         {/* Utilizar el componente de tarjeta dentro del mapeo de juegos */}
         {currentGames.map((game) => (
           <Card
