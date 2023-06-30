@@ -8,21 +8,22 @@
   }
   
   .detailContainer h2 {
-    font-size: 24px;
+    font-size: 45px;
     color: yellow;
     text-align: center;
     margin-bottom: 10px;
   }
   
   .detailContainer h3 {
-    font-size: 20px;
+    font-size: 35px;
     color: greenyellow;
     margin-bottom: 5px;
   }
   
-  .detailContainer p {
-    font-size: 16px;
+  .detailContainer h4 {
+    font-size: 30px;
     margin-bottom: 5px;
+    color: #00803a;
   }
   
   .detailContainer img {
@@ -35,14 +36,19 @@
   .detailContainer .description {
     font-size: 24px;
     line-height: 1.5;
+    color: #748ca2; 
   }
   
   .detailContainer .platforms {
     font-style: italic;
+    color: #00803a;
+    font-size: 20px;
   }
   
   .detailContainer .genres {
     font-weight: bold;
+    color: #00803a;
+    font-size: 20px;
   }
 
   .image {

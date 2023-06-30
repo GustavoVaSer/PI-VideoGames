@@ -33,9 +33,9 @@ function GameDetail({ match }) {
 
   return (
     <div className={styles.detailContainer}>
-      <h2>Game Detail</h2>
+      <h2>Game Details</h2>
       <h3>Name: {name}</h3>
-      <p>Game ID: {id}</p>
+      <h4>Game ID: {id}</h4>
         <div className={styles.contentContainer}>
           <img src={background_image} alt={name} className={styles.image} />
           <p className={styles.description}>Description: {description_raw}</p>
