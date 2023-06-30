@@ -27,8 +27,7 @@ function Home() {
       <div className={styles.cardsContainer}>
         <Pagination />
       </div>
-
-        <Link to="/form" className={styles.formButton}>Go to Form</Link>
+        <Link to="/form" className={styles.formButton}>Create your Videogame !</Link>
     </div>
   );
 }

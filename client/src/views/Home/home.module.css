@@ -1,6 +1,7 @@
 .home {
     font-family: "Bigelow Rules";
-    color: greenyellow;
+    /* color: greenyellow; */
+    color: aliceblue;
 }
 
 .home {
@@ -31,6 +32,11 @@
   .formButton {
     font-family: "Bigelow Rules", cursive;
     font-size: 24px;
-    padding: 10px 20px;
-    color: red;
+    color: rgb(253, 253, 253);
+    background-color: #256ba9;
+    width: 260px;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 8px #63ba0033;
   }

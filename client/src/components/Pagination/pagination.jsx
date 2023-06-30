@@ -46,7 +46,7 @@ function Pagination() {
 
   const renderPaginationButtons = () => {
     return (
-      <div>
+      <div className={styles.buttonsContainer}>
         <button onClick={() => handleClick("prev")} disabled={currentPage === 1}>
           &lt; Anterior
         </button>
@@ -59,7 +59,7 @@ function Pagination() {
 
   return (
     <div >
-      <h2>Pagination</h2>
+      <h2>Select your Game Card</h2>
       <div className={styles.container}>
         {/* Utilizar el componente de tarjeta dentro del mapeo de juegos */}
         {currentGames.map((game) => (

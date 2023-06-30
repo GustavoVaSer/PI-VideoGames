@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './detail.module.css';
 
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 
@@ -31,16 +32,18 @@ function GameDetail({ match }) {
   } = gameDetails;
 
   return (
-    <div>
+    <div className={styles.detailContainer}>
       <h2>Game Detail</h2>
       <h3>Name: {name}</h3>
       <p>Game ID: {id}</p>
-      <img src={background_image} alt={name} />
-      <p>Description: {description_raw}</p>
-      <p>Platforms: {platforms.map(platform => platform.platform.name).join(', ')}</p>
+        <div className={styles.contentContainer}>
+          <img src={background_image} alt={name} className={styles.image} />
+          <p className={styles.description}>Description: {description_raw}</p>
+        </div>
+      <p className={styles.platforms}>Platforms: {platforms.map(platform => platform.platform.name).join(', ')}</p>
       <p>Released: {released}</p>
       <p>Rating: {rating}</p>
-      <p>Genres: {genres.map(genre => genre.name).join(', ')}</p>
+      <p className={styles.genres}>Genres: {genres.map(genre => genre.name).join(', ')}</p>
     </div>
   );
 }

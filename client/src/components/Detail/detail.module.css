@@ -1,0 +1,62 @@
+.detailContainer {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: black;
+    color: green;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+  
+  .detailContainer h2 {
+    font-size: 24px;
+    color: yellow;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .detailContainer h3 {
+    font-size: 20px;
+    color: greenyellow;
+    margin-bottom: 5px;
+  }
+  
+  .detailContainer p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .detailContainer img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .detailContainer .description {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  
+  .detailContainer .platforms {
+    font-style: italic;
+  }
+  
+  .detailContainer .genres {
+    font-weight: bold;
+  }
+
+  .image {
+    display: block;
+    width: 700px;
+    height: 700px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: solid 1px white;
+    border-radius: 15px;
+  }
+
+  .contentContainer {
+    display: flex;
+    text-align: justify;
+  }
+  
