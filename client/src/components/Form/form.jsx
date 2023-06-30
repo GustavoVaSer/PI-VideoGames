@@ -69,7 +69,7 @@ function Form() {
 
   return (
     <div className={styles.formContainer}>
-      <h2 className={styles.formTitle}>Create your new VideoGame !</h2>
+    <h2 className={styles.formTitle}>Create your new VideoGame !</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
