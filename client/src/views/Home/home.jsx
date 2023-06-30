@@ -26,7 +26,7 @@ function Home() {
       <SearchBar />
       <Filters />
       <SortingOptions />
-      <div className={styles.cardsContainer}>
+      {/* <div className={styles.cardsContainer}>
         {videoGames.map((game) => (
           <Card
           key={game.id}
@@ -36,8 +36,10 @@ function Home() {
           id={game.id}
         />
         ))}
-      </div>
+      </div> */}
+      <div className={styles.cardsContainer}>
       <Pagination />
+      </div>
         <Link to="/form" className={styles.formButton}>Go to Form</Link>
     </div>
   );

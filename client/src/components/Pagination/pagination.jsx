@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux/action';
 import { useSelector } from 'react-redux';
 import Card from '../Card/card';
+import styles from './pagination.module.css';
 
 function Pagination() {
   const dispatch = useDispatch();
@@ -57,19 +58,19 @@ function Pagination() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Pagination</h2>
       <div>
         {/* Utilizar el componente de tarjeta dentro del mapeo de juegos */}
         {currentGames.map((game) => (
-  <Card
-    key={game.id}
-    name={game.name}
-    image={game.image}
-    genres={game.genres}
-    id={game.id}
-  />
-))}
+          <Card
+            key={game.id}
+            name={game.name}
+            image={game.background_image}
+            genres={game.genres}
+            id={game.id}
+          />
+        ))}
       </div>
       <div>{renderPaginationButtons()}</div>
     </div>
