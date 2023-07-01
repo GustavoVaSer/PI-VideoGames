@@ -105,7 +105,7 @@ function Form() {
             <option className={styles.option} value="rol">Rol</option>
           </select>
         </div>
-        <button className={styles.button} type="submit">Crear Videojuego</button>
+        <button className={styles.button} type="submit">Lets Create!</button>
       </form>
     </div>
   );

@@ -17,7 +17,7 @@ function GameDetail({ match }) {
   }, [gameId]);
 
   if (!gameDetails) {
-    return <p>No details for this game...</p>;
+    return <p>Loading Game Details...</p>;
   }
 
   const {

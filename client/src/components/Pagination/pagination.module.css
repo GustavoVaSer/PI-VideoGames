@@ -7,6 +7,12 @@
     margin-top: 2rem;
   }
 
+  .select {
+    color: #097825;
+    background-color: #ffffff;
+    border: solid 1px rgb(116, 3, 3);
+  }
+
   .buttonsContainer {
     margin-top: 30px;
   }
@@ -20,6 +26,10 @@
     margin-left: 10px;
     font-size: 20px;
     box-shadow: 5px 8px #63ba0033;
+    &:hover {
+      background-color: #6d0505;
+      color: white;
+    }
   }
   
   

@@ -32,11 +32,15 @@
   .formButton {
     font-family: "Bigelow Rules", cursive;
     font-size: 24px;
-    color: rgb(253, 253, 253);
-    background-color: #256ba9;
+    color: rgb(0, 0, 0);
+    background-color: #ced80f;
     width: 260px;
     height: 40px;
     margin-top: 10px;
     border-radius: 15px;
     box-shadow: 5px 8px #63ba0033;
+    &:hover {
+      background-color: #6d0505;
+      color: white;
+    }
   }
