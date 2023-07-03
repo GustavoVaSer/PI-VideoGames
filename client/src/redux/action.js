@@ -56,8 +56,30 @@ export const setCurrentPage = (pageNumber) => {
 };
 
 export const sortVideoGames = (sortType) => {
-  return {
-    type: SORT_VIDEO_GAMES,
-    payload: sortType,
+  return (dispatch, getState) => {
+    const videoGames = getState().videoGames; // Obtén la lista de juegos del estado global
+    let sortedVideoGames = [...videoGames]; // Crea una copia de la lista de juegos para evitar mutar el estado global directamente
+
+    switch (sortType) {
+      case "name-asc":
+        sortedVideoGames.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        sortedVideoGames.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "rating-asc":
+        sortedVideoGames.sort((a, b) => a.rating - b.rating);
+        break;
+      case "rating-desc":
+        sortedVideoGames.sort((a, b) => b.rating - a.rating);
+        break;
+      default:
+        break;
+    }
+
+    dispatch({
+      type: SORT_VIDEO_GAMES,
+      payload: sortedVideoGames,
+    });
   };
 };
