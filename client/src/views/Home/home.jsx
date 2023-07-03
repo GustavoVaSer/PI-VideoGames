@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 
 
 const itemsPerPage = 15;
-// const [currentGames, setCurrentGames] = useState([]);
 
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 

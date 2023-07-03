@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux/action';
 import { useSelector } from 'react-redux';
@@ -10,23 +10,6 @@ function Pagination() {
   const itemsPerPage = 15;
   const currentGames = useSelector((state) => state.videoGames);
   const currentPage = useSelector((state) => state.currentPage);
-
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`);
-  //       const data = await response.json();
-  //       const gamesToLoad = data.results;
-  //       // setCurrentGames(gamesToLoad);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [currentPage]);
 
   const handleClick = (pageNumber) => {
     let nextPage = currentPage;
@@ -61,7 +44,6 @@ function Pagination() {
     <div >
       <h2 className={styles.select}>Select your Game Card</h2>
       <div className={styles.container}>
-        {/* Utilizar el componente de tarjeta dentro del mapeo de juegos */}
         {currentGames.map((game) => (
           <Card
             key={game.id}

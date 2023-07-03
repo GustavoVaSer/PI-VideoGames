@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortVideoGames } from '../../redux/action';
 
 function SortingOptions({setCurrentGames}) {
   const dispatch = useDispatch();
-  
 
-  // const [sortType, setSortType] = useState('');
 
   const handleSort = (type) => {
-    // setSortType(type);
     dispatch(sortVideoGames(type));
   };
 
