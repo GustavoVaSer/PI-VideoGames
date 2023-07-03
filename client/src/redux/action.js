@@ -11,13 +11,11 @@ export const SORT_VIDEO_GAMES = "SORT_VIDEO_GAMES";
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 console.log(API_KEY);
 
-export function fetchVideoGames() {
+export function fetchVideoGames(url) {
   console.log("Ejecutando fetchVideoGames");
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=15`
-      );
+      const response = await axios.get(url);
       dispatch({
         type: FETCH_VIDEOGAMES_SUCCESS,
         payload: response.data.results,
@@ -27,6 +25,7 @@ export function fetchVideoGames() {
     }
   };
 }
+
 export const setSearchTerm = (searchTerm) => {
   console.log("Ejecutando setSearchTerm con término de búsqueda:", searchTerm);
   return {

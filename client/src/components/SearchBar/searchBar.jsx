@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchVideoGames, setSearchTerm } from '../../redux/action';
 
+
+const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
+
 function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useDispatch();
 
   const handleSearch = () => {
+    const URL = `https://api.rawg.io/api/platforms?key=${API_KEY}`;
     console.log("Botón de búsqueda clicado");
     dispatch(setSearchTerm(searchValue));
-    dispatch(fetchVideoGames());
+    dispatch(fetchVideoGames(URL));
   };
 
   const handleChange = (e) => {
@@ -25,3 +29,4 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
