@@ -5,7 +5,7 @@ import {
   SET_ORIGIN_FILTER,
   SET_CURRENT_PAGE,
   SORT_VIDEO_GAMES,
-  SET_SEARCH_TERM, // Agregar esta importación
+  SET_SEARCH_TERM,
 } from "./action";
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
   genreFilter: "",
   originFilter: "",
   currentPage: 1,
-  searchTerm: "", // Nuevo estado para el término de búsqueda
+  searchTerm: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -42,11 +42,14 @@ function rootReducer(state = initialState, action) {
         currentPage: action.payload,
       };
     case SORT_VIDEO_GAMES:
-      return state;
+      return {
+        ...state,
+        videoGames: action.payload,
+      };
     case SET_SEARCH_TERM:
       return {
         ...state,
-        searchTerm: action.payload,
+        videoGames: action.payload,
       };
     default:
       return state;

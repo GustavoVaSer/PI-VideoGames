@@ -14,11 +14,11 @@ function SearchBar() {
   const history = useHistory();
 
   const handleSearch = () => {
-    const URL = `https://api.rawg.io/api/platforms?key=${API_KEY}`;
+    // const URL = `https://api.rawg.io/api/platforms?key=${API_KEY}`;
     console.log("Botón de búsqueda clicado");
     dispatch(setSearchTerm(searchValue));
-    dispatch(fetchVideoGames(URL));
-    history.push('/search-results');
+    // dispatch(fetchVideoGames(URL));
+    // history.push('/search-results');
   };
 
   const handleChange = (e) => {
@@ -29,7 +29,7 @@ function SearchBar() {
     <div>
       <input type="text" value={searchValue} onChange={handleChange} placeholder="Search video games..." />
       <button onClick={handleSearch}>Search</button>
-      <SearchResults /> {/* Renderiza el componente SearchResults */}
+
     </div>
   );
 }

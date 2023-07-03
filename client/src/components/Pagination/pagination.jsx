@@ -8,25 +8,25 @@ import styles from './pagination.module.css';
 function Pagination() {
   const dispatch = useDispatch();
   const itemsPerPage = 15;
-  const [currentGames, setCurrentGames] = useState([]);
+  const currentGames = useSelector((state) => state.videoGames);
   const currentPage = useSelector((state) => state.currentPage);
 
-  const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`);
-        const data = await response.json();
-        const gamesToLoad = data.results;
-        setCurrentGames(gamesToLoad);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    fetchData();
-  }, [currentPage]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`);
+  //       const data = await response.json();
+  //       const gamesToLoad = data.results;
+  //       // setCurrentGames(gamesToLoad);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [currentPage]);
 
   const handleClick = (pageNumber) => {
     let nextPage = currentPage;

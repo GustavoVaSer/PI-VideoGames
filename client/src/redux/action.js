@@ -28,9 +28,15 @@ export function fetchVideoGames(url) {
 
 export const setSearchTerm = (searchTerm) => {
   console.log("Ejecutando setSearchTerm con término de búsqueda:", searchTerm);
-  return {
-    type: SET_SEARCH_TERM,
-    payload: searchTerm,
+  return (dispatch, getState) => {
+    const videoGames = getState().videoGames;
+    const filteredGames = videoGames.filter((game) =>
+      game.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    dispatch({
+      type: SET_SEARCH_TERM,
+      payload: filteredGames,
+    });
   };
 };
 
