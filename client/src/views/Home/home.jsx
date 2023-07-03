@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchVideoGames } from '../../redux/action.js';
+import { fetchVideoGames, fetchGenres } from '../../redux/action.js';
 import SearchBar from '../../components/SearchBar/searchBar';
 import Filters from '../../components/Filters/filters.jsx';
 import SortingOptions from '../../components/SortingOptions/sortingOptions';
@@ -21,6 +21,7 @@ function Home() {
   
   useEffect(() => {
     dispatch(fetchVideoGames(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`));
+    dispatch(fetchGenres(`https://api.rawg.io/api/genres?key=${API_KEY}`))
   }, [dispatch, currentPage]);
 
   return (

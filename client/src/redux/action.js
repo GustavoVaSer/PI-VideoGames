@@ -3,10 +3,14 @@ require("dotenv").config();
 export const FETCH_VIDEOGAMES_SUCCESS = "FETCH_VIDEOGAMES_SUCCESS";
 export const FETCH_VIDEOGAMES_FAILURE = "FETCH_VIDEOGAMES_FAILURE";
 export const SET_GENRE_FILTER = "SET_GENRE_FILTER";
+export const FETCH_VIDEOGAME_GENRE = "FETCH_VIDEOGAME_GENRE";
 export const SET_ORIGIN_FILTER = "SET_ORIGIN_FILTER";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
 export const SORT_VIDEO_GAMES = "SORT_VIDEO_GAMES";
+export const CREATE_VIDEO_GAME_SUCCESS = "CREATE_VIDEO_GAME_SUCCESS";
+export const CREATE_VIDEO_GAME_FAILURE = "CREATE_VIDEO_GAME_FAILURE";
+export const FETCH_GENRES = "FETCH_GENRES";
 
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
 console.log(API_KEY);
@@ -40,10 +44,32 @@ export const setSearchTerm = (searchTerm) => {
   };
 };
 
-export const setGenreFilter = (genre) => {
-  return {
-    type: SET_GENRE_FILTER,
-    payload: genre,
+export const fetchVideogamesByGender = (genre) => {
+  const url = `https://api.rawg.io/api/games?genres=${genre}`;
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(url);
+      dispatch({
+        type: FETCH_GENRES,
+        payload: response.data.results,
+      });
+    } catch (error) {
+      dispatch({ type: FETCH_VIDEOGAMES_FAILURE, payload: error.message });
+    }
+  };
+};
+
+export const fetchGenres = (url) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(url);
+      dispatch({
+        type: FETCH_VIDEOGAME_GENRE,
+        payload: response.data.results,
+      });
+    } catch (error) {
+      dispatch({ type: FETCH_VIDEOGAMES_FAILURE, payload: error.message });
+    }
   };
 };
 
@@ -87,5 +113,30 @@ export const sortVideoGames = (sortType) => {
       type: SORT_VIDEO_GAMES,
       payload: sortedVideoGames,
     });
+  };
+};
+
+export const createVideoGame = (newGame) => {
+  return (dispatch) => {
+    axios
+      .post(
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=15`,
+        newGame
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log("Nuevo videojuego creado:", data);
+        dispatch({
+          type: CREATE_VIDEO_GAME_SUCCESS,
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.error("Error al crear el nuevo videojuego:", error);
+        dispatch({
+          type: CREATE_VIDEO_GAME_FAILURE,
+          payload: error.message,
+        });
+      });
   };
 };

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGenreFilter, setOriginFilter } from '../../redux/action';
+import { setOriginFilter } from '../../redux/action';
 
 function Filters() {
   const dispatch = useDispatch();
-  const genres = useSelector((state) => state.genres); // Obtén la lista de géneros desde el estado de Redux
+  const genres = useSelector((state) => state.genreFilter); // Obtén la lista de géneros desde el estado de Redux
   const origins = useSelector((state) => state.origins); // Obtén la lista de orígenes desde el estado de Redux
 
   const handleGenreFilter = (genre) => {
-    dispatch(setGenreFilter(genre));
+    // dispatch(setGenreFilter(genre));
   };
 
   const handleOriginFilter = (origin) => {
@@ -19,12 +19,15 @@ function Filters() {
     <div>
       <h2>Filters</h2>
       <div>
-        <h3>Genre</h3>
-        {genres && genres.map((genre) => (
-          <button key={genre.id} onClick={() => handleGenreFilter(genre.name)}>
-            {genre.name}
-          </button>
-        ))}
+      <label htmlFor="genre-select">Choose a genre:</label>
+          <select name="genres" id="genre-select" onChange={(e) => handleGenreFilter(e.target.value)}>
+            <option value="">--Please choose an option--</option>
+            {genres && genres.map((genre) => (
+              <option key={genre.id} value={genre.name}>
+                {genre.name}
+              </option>
+            ))}
+          </select>
       </div>
       <div>
         <h3>Origin</h3>

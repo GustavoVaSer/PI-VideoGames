@@ -6,6 +6,10 @@ import {
   SET_CURRENT_PAGE,
   SORT_VIDEO_GAMES,
   SET_SEARCH_TERM,
+  CREATE_VIDEO_GAME_SUCCESS,
+  CREATE_VIDEO_GAME_FAILURE,
+  FETCH_VIDEOGAME_GENRE,
+  FETCH_GENRES,
 } from "./action";
 
 const initialState = {
@@ -51,6 +55,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         videoGames: action.payload,
       };
+    case CREATE_VIDEO_GAME_SUCCESS:
+      return {
+        ...state,
+        videoGames: [...state.videoGames, action.payload],
+      };
+    case CREATE_VIDEO_GAME_FAILURE:
+      return state;
+    case FETCH_VIDEOGAME_GENRE:
+      return { ...state, genreFilter: action.payload };
+
+    case FETCH_GENRES:
+      return { ...state, genreFilter: action.payload };
+
     default:
       return state;
   }

@@ -42,7 +42,6 @@ function Form() {
       .then(data => {
         console.log('Nuevo videojuego creado:', data);
 
-        // Resetear los campos del formulario después de enviar
         setName('');
         setImage('');
         setDescription('');
