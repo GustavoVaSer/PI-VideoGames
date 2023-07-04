@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import styles from './form.module.css'
-
-const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
+import { useDispatch, useSelector } from 'react-redux';
+import { createVideoGame } from '../../redux/action';
 
 function Form() {
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [platforms, setPlatforms] = useState('');
-  const [releaseDate, setReleaseDate] = useState('');
+  const [released, setReleaseDate] = useState('');
   const [rating, setRating] = useState('');
   const [genres, setGenres] = useState([]);
   const [error, setError] = useState('');
+  const dispatch = useDispatch();
+
+  const genresList = useSelector((state) => state.genreFilter); 
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
 
     // Validaciones del formulario
-    if (!name || !image || !description || !platforms || !releaseDate || !rating || genres.length === 0) {
+    if (!name || !image || !description || !platforms || !released || !rating || genres.length === 0) {
       setError('Please complete all the fields.');
       return;
     }
@@ -26,41 +30,42 @@ function Form() {
       image,
       description,
       platforms,
-      releaseDate,
+      released,
       rating,
       genres,
     };
+    dispatch(createVideoGame(newGame))
 
-    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=15`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newGame),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Nuevo videojuego creado:', data);
+    // fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=15`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(newGame),
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log('Nuevo videojuego creado:', data);
 
-        setName('');
-        setImage('');
-        setDescription('');
-        setPlatforms('');
-        setReleaseDate('');
-        setRating('');
-        setGenres([]);
-        setError('');
-      })
-      .catch(error => {
-        console.error('Error al crear el nuevo videojuego:', error);
-        setError('Ocurrió un error al crear el nuevo videojuego. Por favor, inténtalo nuevamente.');
-      });
+    //     setName('');
+    //     setImage('');
+    //     setDescription('');
+    //     setPlatforms('');
+    //     setReleaseDate('');
+    //     setRating('');
+    //     setGenres([]);
+    //     setError('');
+    //   })
+    //   .catch(error => {
+    //     console.error('Error al crear el nuevo videojuego:', error);
+    //     setError('Ocurrió un error al crear el nuevo videojuego. Por favor, inténtalo nuevamente.');
+    //   });
   };
 
   const handleGenreChange = (e) => {
     const selectedGenreValues = Array.from(e.target.selectedOptions, (option) => option.value);
     const selectedGenres = selectedGenreValues.map((value) => ({
-      id: value,
+      // id: value,
       name: value,
     }));
     setGenres(selectedGenres);
@@ -89,7 +94,7 @@ function Form() {
         </div>
         <div>
           <label className={styles.labels} htmlFor="releaseDate">Release Date:</label>
-          <input className={styles.inputField} type="text" id="releaseDate" value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+          <input className={styles.inputField} type="text" id="releaseDate" value={released} onChange={(e) => setReleaseDate(e.target.value)} />
         </div>
         <div>
           <label className={styles.labels} htmlFor="rating">Rating:</label>
@@ -98,10 +103,15 @@ function Form() {
         <div>
           <label className={styles.labels} htmlFor="genres">Genres:</label>
           <select className={styles.selectField} id="genres" multiple value={genres} onChange={handleGenreChange}>
-            <option className={styles.option} value="accion">Action</option>
-            <option className={styles.option} value="aventura">Advenures</option>
-            <option className={styles.option} value="estrategia">Strategy</option>
-            <option className={styles.option} value="rol">Rol</option>
+            {/* <option className={styles.option} value="Action">Action</option>
+            <option className={styles.option} value="Adventure">Advenures</option>
+            <option className={styles.option} value="Strategy">Strategy</option>
+            <option className={styles.option} value="Rol">Rol</option> */}
+            {genresList && genresList.map((genre) => (
+              <option key={genre.id} className={styles.option}  value={genre.name.toLowerCase()}>
+                {genre.name}
+              </option>
+            ))}
           </select>
         </div>
         <button className={styles.button} type="submit">Lets Create!</button>

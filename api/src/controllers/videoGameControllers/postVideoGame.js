@@ -34,11 +34,11 @@ const postVideoGame = async (game) => {
     where: { name: { [Op.in]: genres } },
   });
 
-  if (genresFound.length === 0) {
-    const error = new Error("No se encontraron los géneros asociados");
-    error.statusCode = 404;
-    throw error;
-  }
+  // if (genresFound.length === 0) {
+  //   const error = new Error("No se encontraron los géneros asociados");
+  //   error.statusCode = 404;
+  //   throw error;
+  // }
 
   // Validación de existencia de videojuego con el mismo nombre
   const gameFound = await Videogame.findOne({ where: { name } });
@@ -63,15 +63,15 @@ const postVideoGame = async (game) => {
   const newGame = await Videogame.create(newGameObj);
 
   // Asociación de los géneros al videojuego creado
-  await newGame.addGenres(genresFound);
+  // await newGame.addGenres(genresFound);
 
   // Construcción del nuevo videojuego con los géneros asociados
-  const newGameGenres = await Videogame.findOne({
+  const newGameCreated = await Videogame.findOne({
     where: { name: newGameObj.name },
-    include: [Genre],
+    // include: [Genre],
   });
 
-  return newGameGenres;
+  return newGameCreated;
 };
 
 module.exports = postVideoGame;

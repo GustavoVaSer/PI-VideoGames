@@ -12,8 +12,6 @@ export const CREATE_VIDEO_GAME_SUCCESS = "CREATE_VIDEO_GAME_SUCCESS";
 export const CREATE_VIDEO_GAME_FAILURE = "CREATE_VIDEO_GAME_FAILURE";
 export const FETCH_GENRES = "FETCH_GENRES";
 
-const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
-
 export function fetchVideoGames(url) {
   console.log("Ejecutando fetchVideoGames");
   return async function (dispatch) {
@@ -119,10 +117,7 @@ export const sortVideoGames = (sortType) => {
 export const createVideoGame = (newGame) => {
   return (dispatch) => {
     axios
-      .post(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=15`,
-        newGame
-      )
+      .post(`http://localhost:3001/videogames`, newGame)
       .then((response) => {
         const data = response.data;
         console.log("Nuevo videojuego creado:", data);
