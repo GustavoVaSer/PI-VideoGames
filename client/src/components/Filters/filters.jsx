@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOriginFilter } from '../../redux/action';
+import { setOriginFilter, fetchVideogamesByGender } from '../../redux/action';
 
 function Filters() {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ function Filters() {
   const origins = useSelector((state) => state.origins); // Obtén la lista de orígenes desde el estado de Redux
 
   const handleGenreFilter = (genre) => {
-    // dispatch(setGenreFilter(genre));
+    dispatch(fetchVideogamesByGender(genre))
   };
 
   const handleOriginFilter = (origin) => {

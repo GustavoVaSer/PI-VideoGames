@@ -44,8 +44,9 @@ export const setSearchTerm = (searchTerm) => {
   };
 };
 
+//Ya no usare axios para hacer un get de la api ahora tengo que usar un filter de mi objeto global videoGames, lo que haga match con genre
 export const fetchVideogamesByGender = (genre) => {
-  const url = `https://api.rawg.io/api/games?genres=${genre}`;
+  const url = `https://api.rawg.io/api/games?key=${API_KEY}genres=${genre}`;
   return async function (dispatch) {
     try {
       const response = await axios.get(url);

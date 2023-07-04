@@ -66,7 +66,7 @@ function rootReducer(state = initialState, action) {
       return { ...state, genreFilter: action.payload };
 
     case FETCH_GENRES:
-      return { ...state, genreFilter: action.payload };
+      return { ...state, FETCH_GENRES: action.payload };
 
     default:
       return state;
