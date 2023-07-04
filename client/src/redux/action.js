@@ -13,7 +13,6 @@ export const CREATE_VIDEO_GAME_FAILURE = "CREATE_VIDEO_GAME_FAILURE";
 export const FETCH_GENRES = "FETCH_GENRES";
 
 const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
-console.log(API_KEY);
 
 export function fetchVideoGames(url) {
   console.log("Ejecutando fetchVideoGames");
@@ -22,7 +21,7 @@ export function fetchVideoGames(url) {
       const response = await axios.get(url);
       dispatch({
         type: FETCH_VIDEOGAMES_SUCCESS,
-        payload: response.data.results,
+        payload: response.data,
       });
     } catch (error) {
       dispatch({ type: FETCH_VIDEOGAMES_FAILURE, payload: error.message });
@@ -46,13 +45,13 @@ export const setSearchTerm = (searchTerm) => {
 
 //Ya no usare axios para hacer un get de la api ahora tengo que usar un filter de mi objeto global videoGames, lo que haga match con genre
 export const fetchVideogamesByGender = (genre) => {
-  const url = `https://api.rawg.io/api/games?key=${API_KEY}&genres=${genre.toLowerCase()}`;
+  const url = `http://localhost:3001/videogames/?genres=${genre.toLowerCase()}`;
   return async function (dispatch) {
     try {
       const response = await axios.get(url);
       dispatch({
         type: FETCH_GENRES,
-        payload: response.data.results,
+        payload: response.data,
       });
     } catch (error) {
       dispatch({ type: FETCH_VIDEOGAMES_FAILURE, payload: error.message });
@@ -66,7 +65,7 @@ export const fetchGenres = (url) => {
       const response = await axios.get(url);
       dispatch({
         type: FETCH_VIDEOGAME_GENRE,
-        payload: response.data.results,
+        payload: response.data,
       });
     } catch (error) {
       dispatch({ type: FETCH_VIDEOGAMES_FAILURE, payload: error.message });

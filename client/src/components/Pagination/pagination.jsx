@@ -48,7 +48,7 @@ function Pagination() {
           <Card
             key={game.id}
             name={game.name}
-            image={game.background_image}
+            image={game.image}
             genres={game.genres}
             id={game.id}
           />

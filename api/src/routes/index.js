@@ -33,7 +33,7 @@ router.get("/videogames/:idVideogame", async (req, res) => {
 
 router.get("/videogames", async (req, res) => {
   try {
-    return res.status(200).json(await controllers.getVideoGame());
+    return res.status(200).json(await controllers.getVideoGame(req.query));
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

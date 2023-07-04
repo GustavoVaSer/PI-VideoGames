@@ -13,15 +13,15 @@ import { Link } from 'react-router-dom';
 
 const itemsPerPage = 15;
 
-const API_KEY = "1d449c3663a04ff6b2ed70c1faca004b";
-
 function Home() {
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.currentPage);
   
   useEffect(() => {
-    dispatch(fetchVideoGames(`https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`));
-    dispatch(fetchGenres(`https://api.rawg.io/api/genres?key=${API_KEY}`))
+    // const url = `https://api.rawg.io/api/games?key=${API_KEY}&page=${currentPage}&page_size=${itemsPerPage}`;
+    const url = `http://localhost:3001/videogames?page_size=${itemsPerPage}`;
+    dispatch(fetchVideoGames(url));
+    dispatch(fetchGenres(`http://localhost:3001/genres/`))
   }, [dispatch, currentPage]);
 
   return (
